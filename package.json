@@ -14,14 +14,14 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "hogan.js": "~2.0.0"
+    "hogan.js": "~2.0.0",
+    "underscore": "~1.8.2"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt": "~0.4.2",
-    "underscore": "~1.8.2"
+    "grunt": "~0.4.2"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"
