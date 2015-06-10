@@ -1,0 +1,38 @@
+{
+  "name": "grunt-sc-mustache-html",
+  "description": "Mustache renderer based on the grunt-mustache-html plugin by hoio.",
+  "version": "1.0.4",
+  "author": {
+    "name": "Optimal Software s.r.o.",
+    "email": "info@broadbandspeedchecker.co.uk"
+  },
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "hogan.js": "~2.0.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.2",
+    "underscore": "~1.8.2"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "keywords": [
+    "gruntplugin", "optimal software", "speedchecker"
+  ],
+  "maintainers": [
+    {
+      "name": "Optimal Software s.r.o.",
+      "email": "info@broadbandspeedchecker.co.uk"
+    }
+  ]
+}
