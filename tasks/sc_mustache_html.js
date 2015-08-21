@@ -192,7 +192,7 @@ module.exports = function(grunt) {
 		taskModule.init(this.data.globals, this.options({
 			src: 'src',
 			dist: 'dist',
-			type: 'mustache|hbs',
+			type: 'mustache',
 		}));
 
 		} catch(e) {
