@@ -1,7 +1,7 @@
 {
   "name": "grunt-sc-mustache-html",
   "description": "Mustache renderer based on the grunt-mustache-html plugin by hoio.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": {
     "name": "Optimal Software s.r.o.",
     "email": "info@broadbandspeedchecker.co.uk"
