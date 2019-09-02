@@ -81,15 +81,15 @@ module.exports = function(grunt) {
 			if (!_.isArray(value) || value.length < 1) { return null; }
 
 			value.forEach(function(item, index) {
+				// Properties
+				var path = ''.concat(self.properties.options.dist, '/', item.name, '.', (item.data.render.extension || 'html'));
+
 				// Content
-				var content = self.createContentFromTemplate(item);
+				var content = self.createContentFromTemplate(item, path);
 				if (!_.isString(content) || (content === '')) { content = ''; }
 
-				// Path
-				var abspath = ''.concat(self.properties.options.dist, '/', item.name, '.', (item.data.render.extension || 'html'));
-
 				// Process
-				grunt.file.write(abspath, content);
+				grunt.file.write(path, content);
 			});
 		},
 
@@ -111,17 +111,17 @@ module.exports = function(grunt) {
 			if ((typeof(value) !== 'string') || (value === '')) { return []; }
 
 			var result = [];
-			grunt.file.recurse(value, function (abspath, rootdir, subdir, filename) {
+			grunt.file.recurse(value, function (path, rootdir, subdir, filename) {
 		        if (!filename.match(fileTypeMatcher)) { return null; }
 
 		        // Properties
 		        var name = (subdir? (subdir + '/') : '') + filename.replace(fileTypeMatcher, '');
-		        var dataPath = abspath.replace(fileTypeMatcher, '.json');
+		        var dataPath = path.replace(fileTypeMatcher, '.json');
 
 			    // Result
 			    result.push(_.extend({}, privateModule.models.template, {
 				    name: name,
-				    vanilla: hogan.compile(grunt.file.read(abspath), { sectionTags: [{o:'_i', c:'i'}] }),
+				    vanilla: hogan.compile(grunt.file.read(path), { sectionTags: [{o:'_i', c:'i'}] }),
 				    data: grunt.file.exists(dataPath)? grunt.file.readJSON(dataPath) : null,
 				}));
 		    });
@@ -130,9 +130,23 @@ module.exports = function(grunt) {
 		    return result;
 		},
 
-		createContentFromTemplate: function(value) {
+		getPathname: function(value) {
+			var result = value
+
+			result = !result.startsWith('build/') ? result :  result.substr(5)
+			result = !result.endsWith('/index.html') ? result : result.substr(0, result.length - 10)
+			result = !result.endsWith('/index.aspx') ? result : result.substr(0, result.length - 11)
+			result = !result.endsWith('/index.htm') ? result : result.substr(0, result.length - 9)
+			result = !result.endsWith('/index.asp') ? result : result.substr(0, result.length - 9)
+
+			return result
+		},
+
+		createContentFromTemplate: function(value, path) {
 			var self = this;
+			
 			var value = _.extend({}, privateModule.models.template, value);
+			value.data.page.pathname = self.getPathname(path)
 
 			// Case: layout
 			var layout = self.getLayoutTemplate(value.data.render.layout);
