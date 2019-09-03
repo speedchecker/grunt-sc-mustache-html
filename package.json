@@ -18,11 +18,11 @@
           "shortcut": "github:speedchecker/grunt-sc-mustache-html",
           "directUrl": "https://raw.githubusercontent.com/speedchecker/grunt-sc-mustache-html/master/package.json"
         }
-      },
+      }
     ]
   ],
   "_from": "git://github.com/speedchecker/grunt-sc-mustache-html.git",
-  "_id": "grunt-sc-mustache-html@1.0.6",
+  "_id": "grunt-sc-mustache-html@1.0.7",
   "_inCache": true,
   "_location": "/grunt-sc-mustache-html",
   "_phantomChildren": {},
